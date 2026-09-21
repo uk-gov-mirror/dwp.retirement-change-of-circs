@@ -1,0 +1,75 @@
+{% extends "layouts/ol_signed_in.html" %}
+
+{% block pageTitle %}
+  What email address should we send a confirmation to? - Manage your State Pension - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">How we contact you</span>
+              <h1 class="govuk-fieldset__heading">
+                What phone number should we call you on?
+              </h1>
+            </legend>
+
+            <p class="govuk-body">
+              We need this if we need to contact you for further information about your Pension Credit. We will not use it to update your records. If you want to update your contact details, you can do so through Manage Your State Pension homepage. </p>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="phoneType" name="phoneType" type="radio" value="home-phone-number" {{ checked("phoneType", "home-phone-number") }}>
+                <label class="govuk-label govuk-radios__label" for="home-phone-number">
+                  Home phone number
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                  0161 827 3847
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="phoneType" name="phoneType" type="radio" value="mobile-number" {{ checked("phoneType", "mobile-number") }}>
+                <label class="govuk-label govuk-radios__label" for="mobile-number">
+                  Mobile number
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                  0779387483
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="phoneType" name="phoneType" type="radio" value="new-phone-number" data-aria-controls="conditional-contact-2" {{ checked("phoneType", "new-phone-number") }}>
+                <label class="govuk-label govuk-radios__label" for="new-phone-number">
+                  A different phone number
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="new-phone-number">
+                    Enter a phone number
+                  </label>
+                  <input class="govuk-input govuk-!-width-one-third" id="new-phone-number" name="new-phone-number" type="tel" autocomplete="tel">
+                </div>
+              </div>
+          </fieldset>
+          </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">
+        Get help
+      </h2>
+      <p><a href="../contact-pension-service&help" target="_blank">Contact us by phone to get help with the online service (opens in new tab)</a></p>
+    </div>
+  </div>
+
+{% endblock %}

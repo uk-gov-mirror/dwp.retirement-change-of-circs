@@ -1,0 +1,376 @@
+{% extends "layouts/ol_signed_in.html" %}
+
+{% block pageTitle %}
+  Check your answers about your new address - Manage your State Pension - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Eligibility</span>
+      <h1 class="govuk-heading-l">Check your answers about your eligibility</h1>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Update address for State Pension and Pension Credit
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['select-benefit'] %}
+                {{ data['select-benefit'] }}
+              {% else %}
+                Yes
+              {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="pension-credit-warm-up">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Rent the place you are telling us about
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="rent-now">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Rent the place you lived before
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="rent-before">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div> 
+          <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Already moved
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="have-you-already-moved">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div> -->
+          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              UK address 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['uk-address'] %}
+                {{ data['uk-address'] }}
+              {% else %}
+                Yes
+              {% endif %}  
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="uk-address">
+                Change<span class="govuk-visually-hidden"> if your moving this property</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Permanent or temporary
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Permanent
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="temp-or-perm">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+<!-- 
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Property type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['property-type']  %}
+                {{ data['property-type'] }}
+              {% else %}
+                Yes
+              {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="type-of-property">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div> -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Date moved
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['date-moved-day']%}
+                {{data['date-moved-day']}} {{data['date-moved-month'] | monthName}} {{data['date-moved-year']}}
+              {% else %}
+                1 March 2025
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="when-did-you-move">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+          {% if (data['live-with-partner'] == "Yes") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Live with a partner
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['partner'] %}
+                {{ data['partner'] }}
+              {% else %}
+                Yes
+              {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="live-with-a-partner">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Partner live at previous property
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['partner-pp'] %}
+                {{ data['partner-pp'] }}
+              {% else %}
+                Yes
+              {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="partner-live-at-previous-property">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Partner move to the new property with you
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['partner-move'] %}
+                {{ data['partner-move'] }}
+              {% else %}
+                Yes
+              {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="partner-move">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Partner date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['partner-dob-day']%}
+                {{data['partner-dob-day']}} {{data['partner-dob-month'] | monthName}} {{data['partner-dob-year']}}
+              {% else %}
+                18 February 1954
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="partner-dob">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+          <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Partner receiving housing benefit
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['partner-hb'] %}
+                {{ data['partner-hb'] }}
+              {% else %}
+                Yes
+              {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="partner-hb">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div> -->
+          {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Live with a partner
+            </dt>
+            <dd class="govuk-summary-list__value">
+                {{ data['live-with-partner'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="live-with-a-partner">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+          {%endif%}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              Anyone else live with you
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['other-people'] %}
+                {{ data['other-people'] }}
+              {% else %}
+                No
+              {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="live-with-other-people">
+                Change<span class="govuk-visually-hidden"> residential address</span>
+              </a>
+            </dd>
+          </div>
+
+          <!-- {% if (data['select-address'] == "Select1") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              New address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              1 Square Street<br>
+              York<br>
+              YO3 1SQ
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address-finder/select-an-address">
+                Change<span class="govuk-visually-hidden"> your address</span>
+              </a>
+            </dd>
+          </div>
+
+          {% elif (data['select-an-address'] == "Select2") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              New address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              1 Square Street<br>
+              York<br>
+              YO3 1SQ
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address-finder/select-an-address">
+                Change<span class="govuk-visually-hidden"> your address</span>
+              </a>
+            </dd>
+          </div>
+          {% elif (data['select-address'] == "Select3") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              New address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              1 Square Street<br>
+              York<br>
+              YO3 1SQ
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address-finder/select-an-address">
+                Change<span class="govuk-visually-hidden"> your address</span>
+              </a>
+            </dd>
+          </div>
+          {% elif (data['select-address'] == "Select4") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              New address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              1 Square Street<br>
+              York<br>
+              YO3 1SQ
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address-finder/select-an-address">
+                Change<span class="govuk-visually-hidden"> your address</span>
+              </a>
+            </dd>
+          </div>
+
+          {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width:40%;">
+              New address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              1 Square Street<br>
+              York<br>
+              YO3 1SQ
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="address-finder/select-an-address">
+                Change<span class="govuk-visually-hidden"> your address</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %} -->
+        </dl>
+     
+        <form method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+    </div>
+  </div>
+
+{% endblock %}
+{% block footer %}
+    {{ govukFooter({
+      meta: {
+        items: [
+          {
+            href: "../2-0/check-answers.html",
+            text: "Lighter declaration",
+            attributes: {
+              target: "_blank"
+            }
+          },
+          {
+            href: "https://govuk-prototype-kit.herokuapp.com/",
+            text: "GOV.UK Prototype Kit " + releaseVersion
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          }
+        ],
+        visuallyHiddenTitle: "Footer links"
+      }
+    }) }}
+  {% endblock %}

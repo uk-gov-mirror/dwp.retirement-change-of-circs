@@ -1,0 +1,84 @@
+{% extends "layouts/ol_signed_in.html" %}
+
+{% block pageTitle %}
+  What type of property is it? - Manage your State Pension - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">Eligibility</span>
+              <h1 class="govuk-fieldset__heading">
+                What type of property is it?
+              </h1>
+            </legend>
+
+            <!-- <p class="govuk-body">
+              You can only change your address after you have moved.
+            </p> -->
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="property-type" name="property-type" type="radio" value="House, bungalow, flat or apartment" {{ checked("property-type", "House") }}>
+                <label class="govuk-label govuk-radios__label" for="house">
+                  House, bungalow, flat or apartment
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="property-type" name="property-type" type="radio" value="Self contained flat, apartment or annexe which is attached to someone's property" {{ checked("property-type", "flat") }}>
+                <label class="govuk-label govuk-radios__label" for="flat">
+                  Self contained flat, apartment or annexe which is attached to someone's property
+                </label>
+              </div>
+              <!-- <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="property-type" name="property-type" type="radio" value="Hospital" {{ checked("property-type", "hospital") }}>
+                <label class="govuk-label govuk-radios__label" for="hospital">
+                  Hospital
+                </label>
+              </div> -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="property-type" name="property-type" type="radio" value="Care home" {{ checked("property-type", "care-home") }}>
+                <label class="govuk-label govuk-radios__label" for="carehome">
+                  Care home
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="property-type" name="property-type" type="radio" value="Caravan, houseboat or mobile home" {{ checked("property-type", "Caravan") }}>
+                <label class="govuk-label govuk-radios__label" for="Caravan">
+                  Caravan, houseboat or mobile home
+                </label>
+              </div>
+
+              <div class="govuk-radios__divider">or</div>
+             
+
+              <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="property-type" name="property-type" type="radio" value="Property type not listed" {{ checked("property-type", "other") }}>
+                  <label class="govuk-label govuk-radios__label" for="Property type not listed">
+                    Property type not listed
+                  </label>
+                </div>
+            </div>
+          </fieldset>
+          </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">
+        Get help
+      </h2>
+      <p><a href="../contact-pension-service&help" target="_blank">Contact us by phone to get help with the online service (opens in new tab)</a></p>
+    </div>
+  </div>
+
+{% endblock %}

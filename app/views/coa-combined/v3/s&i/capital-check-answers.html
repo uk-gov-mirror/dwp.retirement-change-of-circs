@@ -1,0 +1,231 @@
+
+{% extends "layouts/ol_signed_in.html" %}
+
+{% block pageTitle %}
+  Check your answers about your partner - Manage your State Pension - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds">
+       <span class="govuk-caption-l">Money and investments</span>
+
+        <h1 class="govuk-heading-l">Check your answers about your money and investments</h1>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          {%if data['capitalTypes']%}
+          <div class="govuk-summary-list__row">
+            {%if data['partner'] == 'Yes'%}
+            <dt class="govuk-summary-list__key">
+              Where you and {{ data['first-name']}} have money
+            </dt>
+
+            {% else%}
+            <dt class="govuk-summary-list__key">
+              Where you have money
+            </dt>
+            {%endif%}
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for bullet in data['capitalTypes']%}
+                  <li>{{bullet}}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="capital-select-capital">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+          </div>
+          {%endif%}
+
+          {%if data['todayTotal']%}
+            <div class="govuk-summary-list__row">
+            {%if data['partner'] == 'Yes'%}
+            <dt class="govuk-summary-list__key">
+              Money you and {{ data['first-name']}} have today
+            </dt>
+            {% else%}
+            <dt class="govuk-summary-list__key">
+              Money you have today
+            </dt>
+            {% endif %}
+
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data['todayTotal'] %}
+                £{{data['todayTotal']}}
+                <p class="govuk-hint">{{data['todayTotal|toWords']}}</p>
+              </ul>
+              {% else %}
+                £3000
+                <p class="govuk-hint">Three thousand pounds</p>
+              {% endif %}
+            </dd>
+            
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="capital-total-today">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Own any property or land
+            </dt>
+
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data['other-property'] == 'Yes' %}
+                {{ data['other-property'] }}
+              {% else %}
+                No
+              {% endif %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="other-property">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+          </div>
+          <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Buy or carry out essential work on your main home
+            </dt>
+
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data['propertyRepair'] %}
+                {{ data['propertyRepair'] }}
+              {% else %}
+                No
+              {% endif %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="property-repairs">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+          </div> -->
+
+          <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payments and payouts
+            </dt>
+
+
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for bullet in data['disregardTypes']%}
+                  <li>{{bullet}}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="disregards">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+          </div> -->
+
+
+
+          {% else %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Where you have money
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                  <li>bank and building society accounts</li>
+                  <li>credit union and Post Office accounts</li>
+                  <li>ISAs</li>
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="capital-total-today">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Money you have today
+            </dt>
+
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                £3000
+                <p class="govuk-hint">Three thousand pounds</p>
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="capital-total-today">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Own any property or land
+            </dt>
+
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data['otherProperty'] %}
+                {{ data['otherProperty'] }}
+              {% else %}
+                No
+              {% endif %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="other-property">Change<span class="govuk-visually-hidden">own any property or land</span></a>
+            </dd>
+          </div>
+          <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Buy or carry out essential work on your main home
+            </dt>
+
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% if data['propertyRepair'] %}
+                {{ data['propertyRepair'] }}
+              {% else %}
+                No
+              {% endif %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="property-repairs">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+          </div> -->
+
+          <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payments and payouts
+            </dt>
+
+
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for bullet in data['disregardTypes']%}
+                  <li>{{bullet}}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="disregards">Change<span class="govuk-visually-hidden">where you or your partner keep your money</span></a>
+            </dd>
+          </div> -->
+          
+          
+        {%endif%}
+
+        </dl>
+
+        <form method="post">
+          <input type="hidden" name="answers-checked" value="true">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+
+{% endblock %}
+
+

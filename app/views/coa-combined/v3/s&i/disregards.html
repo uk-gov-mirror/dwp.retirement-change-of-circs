@@ -1,0 +1,130 @@
+
+{% extends "layouts/ol_signed_in" %}
+
+{% set pageName = "Do you or your partner have money in any of these?" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form"  method="post">
+        <div class="govuk-form-group">
+        <form method="post" >
+
+        <div class="govuk-form-group ">
+        <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">Money and investments</span>
+
+                {%if data['partner'] == 'Yes'%}
+            <h1 class="govuk-fieldset__heading">
+                Have you or{{ data['first-name']}} ever had any of these payments and payouts?
+            </h1>
+            </legend>
+            <div class="govuk-hint">
+                We might be able to ignore these amounts when working out your Pension Credit. Select and that apply.
+            </div>
+            {% else %}
+            <h1 class="govuk-fieldset__heading">
+                Have you ever had any of these payments and payouts?
+            </h1>
+            </legend>
+            <div class="govuk-hint">
+                We might be able to ignore these amounts when working out your Pension Credit. Select and that apply.
+            </div>
+            {% endif %}      
+            
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes" name="disregardTypes" type="checkbox" value="Money to help you live independently in your own home or the community">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes">
+                        Money to help you live independently in your own home or the community
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-2" name="disregardTypes" type="checkbox" value="Compensation or repayments relating to DWP benefits, where the wrong ammount was paid, or where they were paid late">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-2">
+                        Compensation or repayments relating to DWP benefits, where the wrong ammount was paid, or where they were paid late
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-3" name="disregardTypes" type="checkbox" value="Money you were paid in errors in Council Tax Reduction">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-3">
+                        Money you were paid in errors in Council Tax Reduction
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-4" name="disregardTypes" type="checkbox" value="Money you were paid because you were affected by a terrorist incident">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-4">
+                    Money you were paid because you were affected by a terrorist incident
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-5" name="disregardTypes" type="checkbox" value="Money from a home insurance policy to cover lost or damaged personal possessions">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-5">
+                        Money from a home insurance policy to cover lost or damaged personal possessions
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-6" name="disregardTypes" type="checkbox" value="Compensation for the affects of a vaccine or a blood infection, such as vCJD or HIV">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-6">
+                        Compensation for the affects of a vaccine or a blood infection, such as vCJD or HIV
+                    </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-7" name="disregardTypes" type="checkbox" value="Money from a personal injury claim">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-7">
+                        Money from a personal injury claim
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-8" name="disregardTypes" type="checkbox" value="Compensation related to World War 2 or service in the armed forces">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-8">
+                    Compensation related to World War 2 or service in the armed forces
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-9" name="disregardTypes" type="checkbox" value="Money from the Windrush Compensation Scheme">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-9">
+                    Money from the Windrush Compensation Scheme
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-10" name="disregardTypes" type="checkbox" value="A payment from the LGBT Financial Recognition Scheme">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-10">
+                    A payment from the LGBT Financial Recognition Scheme
+                    </label>
+                </div>
+
+
+                <div class="govuk-checkboxes__divider">or</div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="disregardTypes-none" name="disregardTypes" type="checkbox" value="none" data-behaviour="exclusive">
+                    <label class="govuk-label govuk-checkboxes__label" for="disregardTypes-none">
+                    None of these
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+        </div>
+    </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+        </button>
+
+        </form>
+
+        
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-m">
+        Get help
+      </h2>
+      <p><a href="../contact-pension-service&help" target="_blank">Contact us by phone to get help with the online service (opens in new tab)</a></p>
+    </div>
+</div>
+
+{% endblock %}
